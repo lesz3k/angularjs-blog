@@ -15,7 +15,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
-}); 
+});
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
@@ -36,6 +36,20 @@ app.post('/api/post/getAllPost', (req, res) => {
             console.log('post is:')
             console.log(doc);
             return res.status(200).json(doc)
+        })
+    });
+})
+
+app.post('/api/post/deletePost', (req, res) => {
+    mongoose.connect(url, { useMongoClient: true }, function(err){
+        if(err) throw err;
+        Post.findByIdAndRemove(req.body.id,
+            (err, doc) => {
+            if(err) throw err;
+            return res.status(200).json({
+                status: 'success',
+                data: doc
+            })
         })
     });
 })

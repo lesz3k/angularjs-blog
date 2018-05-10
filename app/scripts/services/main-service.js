@@ -16,9 +16,8 @@ angular.module('clientApp')
         getAllPost: function() {
             return $http.post(base_url + '/api/post/getAllPost');
         },
-        delete: function(id) {
-
+        deletePost: function(id) {
+            return $http.post(base_url + '/api/post/deletePost');
         }
-
     };
   });
