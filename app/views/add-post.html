@@ -15,8 +15,7 @@
                   <input type="checkbox"
                          name="{{tag}}"
                          value="{{tag}}"
-                         ng-model="post.tags"
-                         ng-change="addPost.onCheckboxChange(list,$event)"/>
+                         ng-click="addPost.onCheckboxChange($event)"/>
                   {{tag}}
               </label>
           </div>
