@@ -22,6 +22,7 @@
        });
      }
      this.getAllPosts();
+     angular.element(document.querySelector(".modal-backdrop")).remove();
 
      this.setDelete = (post) => {
        $scope.postToDelete = post;
@@ -37,6 +38,10 @@
            angular.element('#deleteModal .close').trigger('click');
            this.getAllPosts();
        });
+     }
+
+     this.setPostItem = (post) => {
+       PostService.setCurrentPost(post)
      }
 
    }

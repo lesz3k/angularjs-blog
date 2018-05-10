@@ -29,6 +29,11 @@ angular
         controller: 'AddPostCtrl',
         controllerAs: 'addPost'
       })
+      .when('/single-post/:id', {
+        templateUrl: 'views/single-post.html',
+        controller: 'SinglePostCtrl',
+        controllerAs: 'singlePost'
+      })
       .otherwise({
         redirectTo: '/'
       });

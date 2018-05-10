@@ -12,6 +12,7 @@ const base_url = 'http://localhost:3000'
 
 angular.module('clientApp')
   .service('PostService', function ($http) {
+    let currentPost;
     return {
         getAllPost: function() {
             return $http.post(base_url + '/api/post/getAllPost');
@@ -19,7 +20,7 @@ angular.module('clientApp')
         deletePost: function(id) {
             return $http.post(base_url + '/api/post/deletePost',{id : id});
         },
-        addPost(post){
+        addPost: function(post) {
             console.log(post)
             return $http.post(base_url + '/api/post/createPost',{
                 title : post.title,
@@ -27,6 +28,14 @@ angular.module('clientApp')
                 tags: post.tags,
                 date: post.date
             })
+        },
+        setCurrentPost: function(post) {
+            currentPost = post;
+            console.log(currentPost)
+        },
+        getCurrentPost: function() {
+            console.log(currentPost)
+            return currentPost
         }
     };
   });
