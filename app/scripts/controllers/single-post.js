@@ -17,7 +17,7 @@
      this.deletePost = () =>{
        PostService.deletePost($scope.postItem._id).then(result => {
            PostsStore.getAllPostsFromDb();
-           $location.path( "/" );
+           setTimeout((()=>{$location.path( "/" )}), 100)
        });
      }
    }
