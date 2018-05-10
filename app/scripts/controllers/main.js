@@ -12,6 +12,6 @@
    function ($scope, PostService) {
      $scope.posts = [];
      $scope.dbPosts = [];
-     PostService.test()
+     
    }
  ]);

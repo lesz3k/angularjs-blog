@@ -3,6 +3,10 @@ const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const url = 'mongodb://localhost/blogTestDb'
+const Post = require('./model/post')
+const addPosts = require('./add-posts');
+
+addPosts.addPostsIfDbEmpty();
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended : false}))
