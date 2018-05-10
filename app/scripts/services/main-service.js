@@ -19,6 +19,9 @@ angular.module('clientApp')
         delete: function(id) {
 
         },
+        test: function(){
+          return $http.post(base_url + '/api');
+        }
 
     };
   });
