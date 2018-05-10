@@ -19,12 +19,12 @@ var paths = {
   styles: [yeoman.app + '/styles/**/*.scss'],
   test: ['test/spec/**/*.js'],
   testRequire: [
-    '/bower_components/angular/angular.js',
-    '/bower_components/angular-mocks/angular-mocks.js',
-    '/bower_components/angular-resource/angular-resource.js',
-    '/bower_components/angular-cookies/angular-cookies.js',
-    '/bower_components/angular-sanitize/angular-sanitize.js',
-    + '/bower_components/angular-route/angular-route.js',
+    yeoman.app + '/bower_components/angular/angular.js',
+    yeoman.app + '/bower_components/angular-mocks/angular-mocks.js',
+    yeoman.app + '/bower_components/angular-resource/angular-resource.js',
+    yeoman.app + '/bower_components/angular-cookies/angular-cookies.js',
+    yeoman.app + '/bower_components/angular-sanitize/angular-sanitize.js',
+    yeoman.app + '/bower_components/angular-route/angular-route.js',
     'test/mock/**/*.js',
     'test/spec/**/*.js'
   ],
@@ -140,10 +140,10 @@ gulp.task('test', ['start:server:test'], function () {
 gulp.task('bower', function () {
   return gulp.src(paths.views.main)
     .pipe(wiredep({
-      directory: '/bower_components',
+      directory: yeoman.app + '/bower_components',
       ignorePath: '..'
     }))
-  .pipe(gulp.dest('/'));
+  .pipe(gulp.dest(yeoman.app));
 });
 
 ///////////
