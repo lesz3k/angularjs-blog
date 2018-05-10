@@ -64,9 +64,15 @@ app.post('/api/post/createPost', (req, res) => {
             date: req.body.date
         })
         post.save(function (err, newPost) {
-          if (err) return console.error(err);
-          console.log(newPost.title + " saved to posts collection.");
+          /*if (err) return console.error(err);
+          console.log(newPost.title + " saved to posts collection.");*/
+          if(err) throw err;
+          return res.status(200).json({
+              status: 'success',
+              data: newPost
+          })
         });
+        return req
     });
 })
 

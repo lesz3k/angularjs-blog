@@ -9,15 +9,15 @@
  */
 
  angular.module('clientApp')
-   .controller('SinglePostCtrl', ['$scope', '$rootScope', '$location', 'PostService',
-   function ($scope, $rootScope, $location, PostService) {
-    // $scope.postItem = {title: 'test', description: 'test descirption'}
+   .controller('SinglePostCtrl', ['$scope', '$rootScope', '$location', 'PostService', 'PostsStore',
+   function ($scope, $rootScope, $location, PostService, PostsStore) {
+
      $scope.postItem = PostService.getCurrentPost();
 
      this.deletePost = () =>{
        PostService.deletePost($scope.postItem._id).then(result => {
-           //angular.element('#deleteModal .close').trigger('click');
-           $location.path( "/" )
+           PostsStore.getAllPostsFromDb();
+           $location.path( "/" );
        });
      }
    }

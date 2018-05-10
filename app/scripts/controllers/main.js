@@ -7,8 +7,8 @@
  * Controller of the clientApp
  */
  angular.module('clientApp')
-   .controller('MainCtrl', ['$scope', 'PostService',
-   function ($scope, PostService) {
+   .controller('MainCtrl', ['$scope','PostsStore', 'PostService',
+   function ($scope, PostsStore, PostService) {
 
      $scope.posts = [];
      $scope.dbPosts = [];
@@ -16,14 +16,32 @@
      $scope.tags = tagsArray; //tagsArray from /common/tags.js
      $scope.checkedTags = [];
 
-     this.getAllPosts = () => {
-       PostService.getAllPost().then(result => {
-           $scope.posts = result.data;
-           $scope.dbPosts = result.data;
-           console.log(result.data)
-       });
+     this.getAllPostsFromDb = () => {
+       PostsStore.getAllPostsFromDb().then(result => {
+         console.log('get all posts from db:')
+         console.log(result)
+         $scope.posts = result;
+         $scope.dbPosts = result;
+       })
      }
+
+
+     this.getAllPosts = () => {
+       let getStoredPosts = PostsStore.getStoredPosts()
+       if (getStoredPosts === undefined || getStoredPosts == 0){
+          console.log('no posts stored yet')
+          this.getAllPostsFromDb();
+       }
+       else{
+         $scope.posts = getStoredPosts;
+         $scope.dbPosts = getStoredPosts;
+         console.log('stored posts:')
+         console.log(getStoredPosts)
+       }
+     }
+
      this.getAllPosts();
+
      angular.element(document.querySelector(".modal-backdrop")).remove();
 
      this.setDelete = (post) => {
@@ -38,7 +56,12 @@
        PostService.deletePost($scope.postToDelete._id).then(result => {
            console.log(result)
            angular.element('#deleteModal .close').trigger('click');
-           this.getAllPosts();
+           this.getAllPostsFromDb();
+           //reset post tags
+           $scope.checkedTags = [];
+           $scope.tags = $scope.tags.map((tag)=>{
+             return {tag: tag.tag, isClicked: 'no'}
+           })
        });
      }
 

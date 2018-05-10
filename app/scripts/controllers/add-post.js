@@ -11,8 +11,8 @@
 //import Post from '../models/post.model';
 
  angular.module('clientApp')
-   .controller('AddPostCtrl', ['$scope', 'PostService',
-   function ($scope, PostService) {
+   .controller('AddPostCtrl', ['$scope', 'PostService', 'PostsStore',
+   function ($scope, PostService, PostsStore) {
 
      $scope.post = new Post();
      $scope.tags = tagsArray;
@@ -23,10 +23,12 @@
            $scope.post.tags = $scope.checkedList;
            $scope.post.date = new Date().toLocaleString();
            //console.log($scope.post)
-           PostService.addPost($scope.post)
-           .then(res =>{
-               console.log('response is ', res)
+           //let callback = () => setTimeout(PostsStore.getAllPostsFromDb, 100)
+           PostService.addPost($scope.post).then(res => {
+             console.log('new post added');
+             PostsStore.getAllPostsFromDb();
            })
+
            angular.element('#openModalButton').trigger('click');
        } else {
            alert('Title, Description and Tags required');

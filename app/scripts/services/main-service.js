@@ -8,7 +8,7 @@
  * Service in the clientApp.
  */
 
-const base_url = 'http://localhost:3000'
+//const base_url = 'http://localhost:3000'
 
 angular.module('clientApp')
   .service('PostService', function ($http) {
@@ -21,7 +21,6 @@ angular.module('clientApp')
             return $http.post(base_url + '/api/post/deletePost',{id : id});
         },
         addPost: function(post) {
-            console.log(post)
             return $http.post(base_url + '/api/post/createPost',{
                 title : post.title,
                 description : post.description,
