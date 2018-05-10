@@ -15,7 +15,9 @@ version 0.16.0.
 
 ## Build & development
 
-Run `gulp build` for building and `gulp serve` for preview.
+Run `gulp serve` for preview.
+
+Please note that the `gulp build` for building will not work yet, as UGLIFY-JS is detecting ES6 syntax, for which it doesn't have support. 
 
 ## Testing
 
