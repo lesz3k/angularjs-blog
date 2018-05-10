@@ -20,13 +20,13 @@ angular.module('clientApp')
             return $http.post(base_url + '/api/post/deletePost',{id : id});
         },
         addPost(post){
-          console.log(post)
-          /*return this.http.post('/api/post/createPost',{
-              title : post.title,
-              description : post.description,
-              tags: post.tags,
-              date: post.date
-          })*/
+            console.log(post)
+            return $http.post(base_url + '/api/post/createPost',{
+                title : post.title,
+                description : post.description,
+                tags: post.tags,
+                date: post.date
+            })
         }
     };
   });

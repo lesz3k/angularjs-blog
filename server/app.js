@@ -54,4 +54,20 @@ app.post('/api/post/deletePost', (req, res) => {
     });
 })
 
+app.post('/api/post/createPost', (req, res) => {
+    mongoose.connect(url, { useMongoClient: true }, function(err){
+        if(err) throw err;
+        const post = new Post({
+            title: req.body.title,
+            description: req.body.description,
+            tags: req.body.tags,
+            date: req.body.date
+        })
+        post.save(function (err, newPost) {
+          if (err) return console.error(err);
+          console.log(newPost.title + " saved to posts collection.");
+        });
+    });
+})
+
 app.listen(3000, () => console.log('blog server running on port 3000!'))
