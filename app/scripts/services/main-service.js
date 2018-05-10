@@ -14,13 +14,10 @@ angular.module('clientApp')
   .service('PostService', function ($http) {
     return {
         getAllPost: function() {
-            console.log('test')
+            return $http.post(base_url + '/api/post/getAllPost');
         },
         delete: function(id) {
 
-        },
-        test: function(){
-          return $http.post(base_url + '/api');
         }
 
     };

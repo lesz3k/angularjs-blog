@@ -12,6 +12,10 @@
    function ($scope, PostService) {
      $scope.posts = [];
      $scope.dbPosts = [];
-     
+     PostService.getAllPost().then(result => {
+         $scope.posts = result.data;
+         $scope.dbPosts = result.data;
+         console.log(result.data)
+     });
    }
  ]);
