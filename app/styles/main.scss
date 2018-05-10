@@ -46,7 +46,7 @@
   margin-top: 1.5rem;
 }
 
-main {
+main, body >.container {
   margin-bottom: 30px;
 }
 /* Responsive: Portrait tablets and up */
@@ -95,4 +95,15 @@ main {
   bottom: 20px;
   right: 20px;
   z-index: 100;
+}
+.tags-group{
+  display: flex;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.tags-group > div {
+  margin-right:10px;
+}
+.tags-group label {
+  width: 100%;
 }

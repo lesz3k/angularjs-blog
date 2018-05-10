@@ -1,0 +1,43 @@
+<div class="add-post">
+    <form>
+        <div class="form-group">
+            <label for="postTitle">Title</label>
+            <input name="title" type="text" ng-model="post.title" class="form-control" id="postTitle" aria-describedby="postTitle" placeholder="Enter title">
+        </div>
+        <div class="form-group post-description">
+          <label for="description">Description</label>
+          <textarea name="description" class="form-control" ng-model="post.description" id="description"></textarea>
+        </div>
+        <div class="form-group tags-group">
+          <label for="postTags">Tags</label>
+          <div ng-repeat="tag in tags" id="postTags">
+              <label>
+                  <input type="checkbox"
+                         name="{{tag}}"
+                         value="{{tag}}"
+                         ng-model="post.tags"
+                         ng-change="addPost.onCheckboxChange(list,$event)"/>
+                  {{tag}}
+              </label>
+          </div>
+        </div>
+
+        <button ng-click="addPost.addPost()" type="button" class="btn btn-success">Add</button>
+
+    </form>
+</div>
+
+<button id="openModalButton" class="ng-hide" data-toggle="modal" data-target="#addPostModal">Open Modal</button>
+
+<div class="modal fade" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="addPostModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Post added</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
