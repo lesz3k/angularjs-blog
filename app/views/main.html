@@ -1,11 +1,16 @@
+<div class="tags-sort">
+  <h3>Sort list by tags: </h3>
+  <span ng-click="main.sortByTags(tag)" ng-repeat="tag in tags" ng-class="{'active': tag.isClicked=='yes'}" class="badge">{{tag.tag}}</span>
+</div>
+
 <div class="list-group">
   <div class="post-item" ng-repeat="post in posts">
     <a ng-click="main.setPostItem(post)" ng-href="#/single-post/{{post.title}}" class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{post.title}}</h5>
+            <h2 class="mb-1">{{post.title}}</h2>
             <small>{{post.date}}</small>
         </div>
-        <div class="mb-1" ng-bind-html="post.description"></div>
+        <div class="mb-1 post-description" ng-bind-html="post.description"></div>
         <p class="mb-1">Tags: <span ng-repeat="tag in post['tags']" class="badge badge-primary">{{tag}}</span> </p>
     </a>
     <div class="delete-post">
