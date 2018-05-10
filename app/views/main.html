@@ -1,15 +1,35 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div class="list-group">
+  <div class="post-item" ng-repeat="post in posts">
+    <a ng-click="main.setPostItem(post._id)" ng-href="#/" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{post.title}}</h5>
+            <small>{{post.date}}</small>
+        </div>
+        <p class="mb-1" [innerHTML]="post.description"></p>
+        <p class="mb-1">Tags: <span ng-repeat="tag in post['tags']" class="badge badge-primary">{{tag}}</span> </p>
+    </a>
+    <div class="delete-post">
+        <button type="button" ng-click="main.setDelete(post)" data-toggle="modal" data-target="#deleteModal" title="Delete" class="btn btn-danger" aria-hidden="true">Delete</button>
+    </div>
+  </div>
 </div>
 
-<div class="row marketing">
-  <div ng-repeat="post in posts">
-      {{post.title}}
-      <div ng-click="main.delete(post._id)">delete post </div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure ?
+      </div>
+      <div class="modal-footer">
+        <button ng-click="main.unsetDelete()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button ng-click="main.deletePost()" type="button" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
   </div>
 </div>
