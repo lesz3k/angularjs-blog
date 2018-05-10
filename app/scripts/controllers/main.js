@@ -10,7 +10,7 @@
  angular.module('clientApp')
    .controller('MainCtrl', ['$scope', 'PostService',
    function ($scope, PostService) {
-     $scope.posts = [{title:'test'}];
+     $scope.posts = [];
      $scope.dbPosts = [];
      PostService.getAllPost()
    }
