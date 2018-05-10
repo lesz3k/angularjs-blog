@@ -5,7 +5,7 @@
             <h5 class="mb-1">{{post.title}}</h5>
             <small>{{post.date}}</small>
         </div>
-        <p class="mb-1" [innerHTML]="post.description"></p>
+        <div class="mb-1" ng-bind-html="post.description"></div>
         <p class="mb-1">Tags: <span ng-repeat="tag in post['tags']" class="badge badge-primary">{{tag}}</span> </p>
     </a>
     <div class="delete-post">

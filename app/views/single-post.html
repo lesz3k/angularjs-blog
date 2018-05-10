@@ -2,7 +2,7 @@
     <h1 class="display-4">{{postItem.title}}</h1>
     <p>Added on {{postItem.date}}</p>
     <hr class="my-4">
-    <p ng-bind-html="postItem.description"></p>
+    <div ng-bind-html="postItem.description"></div>
 </div>
 
 <div>
@@ -15,7 +15,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
-        <button type="button" id="closeModal" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
