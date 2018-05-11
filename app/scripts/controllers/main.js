@@ -25,7 +25,6 @@
        })
      }
 
-
      this.getAllPosts = () => {
        let getStoredPosts = PostsStore.getStoredPosts()
        if (getStoredPosts === undefined || getStoredPosts == 0){
@@ -76,7 +75,7 @@
      $scope.tags = newTagsArr;
 
      this.sortByTags = (thisTag) => {
-       console.log(thisTag.tag)
+       console.log('selected tag: '+ thisTag.tag)
 
        //change tag style on click
        if (thisTag.isClicked == 'no'){

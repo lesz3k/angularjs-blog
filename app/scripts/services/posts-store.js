@@ -28,9 +28,9 @@ angular.module('clientApp')
         },
         getStoredPosts: function() {
           if(localStorage.getItem('angular-js-blog') === null){
-            console.log('no local storage')
+            console.log('no posts local storage...')
           } else {
-            console.log('cipa')
+            console.log('getting posts from loaclStorage...')
             storedPosts = JSON.parse(localStorage.getItem('angular-js-blog'));
           }
           return storedPosts;

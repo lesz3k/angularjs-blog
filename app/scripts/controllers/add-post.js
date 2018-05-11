@@ -22,13 +22,10 @@
        if($scope.post.title && $scope.post.description && !($scope.checkedList.length == 0)){
            $scope.post.tags = $scope.checkedList;
            $scope.post.date = new Date().toLocaleString();
-           //console.log($scope.post)
-           //let callback = () => setTimeout(PostsStore.getAllPostsFromDb, 100)
            PostService.addPost($scope.post).then(res => {
              console.log('new post added');
              PostsStore.getAllPostsFromDb();
            })
-
            angular.element('#openModalButton').trigger('click');
        } else {
            alert('Title, Description and Tags required');
@@ -43,8 +40,6 @@
            $scope.checkedList = $scope.checkedList.filter(e => e !== event.target.value);
          }
        }
-
-
 
    }
  ]);
