@@ -6,7 +6,7 @@ The server is in the 'server' folder and is build in Node with ExpressJS and con
 
 Please make sure that you have the MongoDB installed and running (e.g. from terminal: `C:\Program Files\MongoDB\Server\3.6\bin>mongod` )
 
-To run the server, please navigate to the server folder and run with `node app.js`
+To run the server, please navigate to the 'angularjs-blog/server' folder and run with `node app.js`
 
 # client
 
@@ -15,9 +15,11 @@ version 0.16.0.
 
 ## Build & development
 
+Before running, please install all dependencies with `npm install`.
+
 Run `gulp serve` for preview.
 
-Please note that the `gulp build` for building will not work yet, as UGLIFY-JS is detecting ES6 syntax, for which it doesn't have support. 
+Please note that the `gulp build` for building will not work yet, as UGLIFY-JS is detecting ES6 syntax, for which it doesn't have support.
 
 ## Testing
 
